@@ -9,7 +9,7 @@ import (
 
 var (
 	user = flag.String("n", "check-ssh-chat", "Username")
-	host = flag.String("h", "localhost:22", "Hostname")
+	host = flag.String("h", "localhost", "Hostname")
 	port = flag.Int("p", 22, "Port")
 
 	timeout = flag.Duration("t", 500*time.Millisecond, "Timeout for the check")

@@ -7,7 +7,7 @@ server is up, and responding.
 
 ```bash
 Usage of ./check-ssh-chat:
-  -h="localhost:22": Hostname
+  -h="localhost": Hostname
   -n="check-ssh-chat": Username
   -p=22: Port
   -t=500ms: Timeout for the check
