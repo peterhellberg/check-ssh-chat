@@ -14,7 +14,7 @@ Usage of ./check-ssh-chat:
   -v=false: Verbose output
 ```
 
-## License
+## MIT License
 
 *Copyright (C) 2014 Peter Hellberg*
 
