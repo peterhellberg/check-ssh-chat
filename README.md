@@ -14,6 +14,14 @@ Usage of ./check-ssh-chat:
   -v=false: Verbose output
 ```
 
+## Example
+
+```bash
+$ ./check-ssh-chat -h pi.c7.se -v
+Checking: pi.c7.se:22
+The ssh-chat server seems to be working
+```
+
 ## MIT License
 
 *Copyright (C) 2014 Peter Hellberg*
