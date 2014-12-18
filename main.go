@@ -12,7 +12,7 @@ var (
 	host = flag.String("h", "localhost", "Hostname")
 	port = flag.Int("p", 22, "Port")
 
-	timeout = flag.Duration("t", 500*time.Millisecond, "Timeout for the check")
+	timeout = flag.Duration("t", 5*time.Second, "Timeout for the check")
 	verbose = flag.Bool("v", false, "Verbose output")
 )
 
