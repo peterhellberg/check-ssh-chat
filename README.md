@@ -3,6 +3,9 @@
 Used to check if a [ssh-chat](https://github.com/shazow/ssh-chat)
 server is up, and responding.
 
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/peterhellberg/check-ssh-chat)
+[![License MIT](https://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](https://github.com/peterhellberg/check-ssh-chat#mit-license)
+
 ## Usage
 
 ```bash
