@@ -16,7 +16,12 @@ var (
 	verbose = flag.Bool("v", false, "Verbose output")
 )
 
+const repoURL = "https://github.com/peterhellberg/check-ssh-chat"
+
+var buildCommit string
+
 func main() {
+	flag.Usage = usage
 	flag.Parse()
 
 	addr := fmt.Sprintf("%s:%d", *host, *port)
@@ -28,6 +33,19 @@ func main() {
 	}
 
 	l("The ssh-chat server seems to be working")
+}
+
+func usage() {
+	fmt.Fprintf(os.Stderr, "usage: ./check-ssh-chat [-h hostname] [-v]\n\n")
+
+	if buildCommit != "" {
+		fmt.Fprintf(os.Stderr, "build: "+repoURL+"/commit/"+buildCommit+"\n\n")
+	}
+
+	fmt.Fprintf(os.Stderr, "flags:\n")
+	flag.PrintDefaults()
+	fmt.Fprintf(os.Stderr, "\n")
+	os.Exit(2)
 }
 
 func l(format string, args ...interface{}) {
