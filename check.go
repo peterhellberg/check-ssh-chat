@@ -18,7 +18,11 @@ func Check(addr string) error {
 		os.Exit(2)
 	}()
 
-	conn, err := dial(addr)
+	now := time.Now().Unix()
+	msg := fmt.Sprintf("check-msg-%d", now)
+	username := fmt.Sprintf("%s-%d", *user, now)
+
+	conn, err := dial(addr, username)
 	if err != nil {
 		return err
 	}
@@ -48,8 +52,7 @@ func Check(addr string) error {
 		return err
 	}
 
-	msg := fmt.Sprintf("check-msg-%d", time.Now().Unix())
-	in.Write([]byte(fmt.Sprintf("/msg %s %s\r\n", *user, msg)))
+	in.Write([]byte(fmt.Sprintf("/msg %s %s\r\n", username, msg)))
 
 	scanner := bufio.NewScanner(out)
 	for scanner.Scan() {
@@ -69,14 +72,14 @@ func Check(addr string) error {
 	return errors.New("did not receive the check message")
 }
 
-func dial(addr string) (*ssh.Client, error) {
+func dial(addr, username string) (*ssh.Client, error) {
 	key, err := MakeKey()
 	if err != nil {
 		return nil, err
 	}
 
 	return ssh.Dial("tcp", addr, &ssh.ClientConfig{
-		User: *user,
+		User: username,
 		Auth: []ssh.AuthMethod{
 			ssh.PublicKeys(key),
 		},
